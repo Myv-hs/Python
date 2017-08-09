@@ -1,6 +1,14 @@
 # first of all import the socket library
 import socket
-import keyboard               
+import keyboard     
+
+def down(key):
+	if not keyboard.is_pressed(key):
+		keyboard.press(key)
+
+def up(key):
+	if keyboard.is_pressed(key):
+		keyboard.release(key)
 
 # next create a socket object
 s = socket.socket()         
@@ -40,6 +48,11 @@ while True:
 	if instring:
 		print(type(instring))
 		print(instring)
+		eventtype = instring.split(' ')[0]
+		if eventtype == 'down':
+			down(instring.split(' ')[1])
+		elif eventtype == 'up':
+			up(instring.split('')[1])
 		#instring = int(instring)
 		#laststring = instring
-		keyboard.press(instring)
+		#keyboard.press(instring)
