@@ -52,9 +52,9 @@ while True:
 		print(type(instring))
 		print(instring)
 		#down(instring)
-		if len(instring.split(''))>1:
+		if len(instring.split(' '))>1:
 			eventtype = instring.split(' ')[0]
 			if eventtype == 'down':
 				down(instring.split(' ')[1])
 			elif eventtype == 'up':
-				up(instring.split('')[1])
+				up(instring.split(' ')[1])
