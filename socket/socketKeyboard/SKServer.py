@@ -4,8 +4,8 @@ import keyboard
 
 def down(key):
 	if not keyboard.is_pressed(key):
-		#keyboard.press(key)
-		keyboard.press_and_release(key)
+		keyboard.press(key)
+		#keyboard.press_and_release(key)
 
 def up(key):
 	if keyboard.is_pressed(key):
@@ -51,10 +51,10 @@ while True:
 	if instring:
 		print(type(instring))
 		print(instring)
-		down(instring)
-		#if len(instring)>0:
-		#	eventtype = instring.split(' ')[0]
-		#	if eventtype == 'down':
-		#		down(instring.split(' ')[1])
-		#	elif eventtype == 'up':
-		#		up(instring.split('')[1])
+		#down(instring)
+		if len(instring.split(''))>1:
+			eventtype = instring.split(' ')[0]
+			if eventtype == 'down':
+				down(instring.split(' ')[1])
+			elif eventtype == 'up':
+				up(instring.split('')[1])
