@@ -48,11 +48,12 @@ while True:
 	if instring:
 		print(type(instring))
 		print(instring)
-		eventtype = instring.split(' ')[0]
-		if eventtype == 'down':
-			down(instring.split(' ')[1])
-		elif eventtype == 'up':
-			up(instring.split('')[1])
-		#instring = int(instring)
-		#laststring = instring
-		#keyboard.press(instring)
+		if len(instring)>0:
+			eventtype = instring.split(' ')[0]
+			if eventtype == 'down':
+				down(instring.split(' ')[1])
+			elif eventtype == 'up':
+				up(instring.split('')[1])
+			#instring = int(instring)
+			#laststring = instring
+			#keyboard.press(instring)
