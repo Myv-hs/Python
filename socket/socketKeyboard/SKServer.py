@@ -1,17 +1,34 @@
 import socket
 import keyboard     
 
+shift_state = False
+
 def down(key):
 	try:
-		if not keyboard.is_pressed(key):
-			keyboard.press(key)
+		#if not keyboard.is_pressed(key):
+		if key == 'shift':
+			global shift_state
+			shift_state = True
+			print("shift_state True")
+		elif key == '/' and shift_state == True:
+			key = '?'
+			print("changing to question mark")
+		elif key == '?':
+			print("The right thing came through")
+
+		keyboard.press(key)
 	except:
 		print("Key Invalid")
 
 def up(key):
 	try:
-		if keyboard.is_pressed(key):
-			keyboard.release(key)
+		if key == 'shift':
+			global shift_state
+			shift_state = False
+			print("shift_state True")
+
+		#if keyboard.is_pressed(key):
+		keyboard.release(key)
 	except:
 		print("Invalid Key releaed")
 
