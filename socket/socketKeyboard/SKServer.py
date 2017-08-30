@@ -13,7 +13,7 @@ def up(key):
 		if keyboard.is_pressed(key):
 			keyboard.release(key)
 	except:
-		print("Invalid Key released")
+		print("Invalid Key releaed")
 
 s = socket.socket()         
 port = 12346                
