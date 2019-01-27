@@ -56,10 +56,6 @@ def main(graph):
 		print(g.matrixToString())
 		return
 
-	elif((sys.argv[2]=="vanquished" or sys.argv[2]=="beat") and (len(sys.argv)==4)):
-		print(str(g.names.index(sys.argv[1]))+">"+str(g.names.index(sys.argv[3])))
-		g.loggame(g.names.index(sys.argv[1]),g.names.index(sys.argv[3]))
-
 	elif(sys.argv[1][1]==">"):
 		print(str(sys.argv[1][0])+">"+str(sys.argv[1][2]))
 		g.loggame(int(sys.argv[1][0]),int(sys.argv[1][2]))
@@ -67,6 +63,10 @@ def main(graph):
 	elif(sys.argv[1]=="reset"):
 		makeGraphFile(graph)
 		return
+
+	elif((sys.argv[2]=="vanquished" or sys.argv[2]=="beat") and (len(sys.argv)==4)):
+		print(str(g.names.index(sys.argv[1]))+">"+str(g.names.index(sys.argv[3])))
+		g.loggame(g.names.index(sys.argv[1]),g.names.index(sys.argv[3]))
 	else:
 		return
 
