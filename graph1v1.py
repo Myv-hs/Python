@@ -18,11 +18,11 @@ class graph:
 
 	def matrixToString(self):
 		out = ""
-		for i in range(len(self.names)):
+		for i in range(self.size):
 			#out += str(j)+" "
-			for each in [str(self.matrix[i][j]) for j in range(len(self.names))]:
+			for each in [str(self.matrix[i][j]) for j in range(self.size)]:
 				out+=each
-			if i != len(self.names)-1:
+			if i != self.size-1:
 				out+="\n"
 
 		return out
@@ -31,11 +31,12 @@ class graph:
 		return str(self.names)
 
 	def addPlayer(self,name):
+		self.size+=1
 		self.names.append(name)
 	
 		for l in self.matrix:
 			l.append(0)
-		self.matrix.append([0 for i in range(len(self.names))])
+		self.matrix.append([0 for i in range(self.size)])
 
 	def loggame(self,w,l):
 		self.matrix[w][l]+=1
