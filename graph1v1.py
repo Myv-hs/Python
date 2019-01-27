@@ -24,11 +24,21 @@ class graph:
 				out+=each
 			if i != self.size-1:
 				out+="\n"
-
 		return out
 
 	def __str__(self):
 		return str(self.names)
+
+	def indexscore(self,idx):
+		out = 0.0
+		for i in range(self.size):
+			if i!=idx and (self.matrix[idx][i]+self.matrix[i][idx])!=0:
+				out += (self.matrix[idx][i] / float(self.matrix[idx][i]+self.matrix[i][idx]))
+		return out
+
+	def playerscore(self,name):
+		return self.indexscore(self.names.index(name))
+
 
 	def addPlayer(self,name):
 		self.size+=1
@@ -47,6 +57,10 @@ def main(graph):
 		return
 	if(sys.argv[1]=="p++" and (len(sys.argv)==3)):
 		g.addPlayer(sys.argv[2])
+
+	elif(sys.argv[1]=="scoreOf" and (len(sys.argv)==3)):
+		print(g.playerscore(sys.argv[2]))
+		return
 
 	elif(sys.argv[1]=="ls"):
 		print(g)
@@ -67,6 +81,7 @@ def main(graph):
 	elif((sys.argv[2]=="vanquished" or sys.argv[2]=="beat") and (len(sys.argv)==4)):
 		print(str(g.names.index(sys.argv[1]))+">"+str(g.names.index(sys.argv[3])))
 		g.loggame(g.names.index(sys.argv[1]),g.names.index(sys.argv[3]))
+	
 	else:
 		return
 
@@ -76,9 +91,10 @@ def makeGraphFile(name):
 	g = graph(0,[],[])
 	save(name,g)
 
-filename="chess.graph"
-print(len(sys.argv))
-print(sys.argv)
+#filename="chess.graph"
+filename="scoretest.graph"
+#makeGraphFile(filename)
+
+#print(len(sys.argv))
+#print(sys.argv)
 main(filename)
-#mtrx = [[1,0,0],[0,1,0],[0,0,1]]
-#print(mtrx)
